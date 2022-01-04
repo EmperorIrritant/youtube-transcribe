@@ -14,6 +14,24 @@
                 AWS.config.credentials.get();
             }
             var Lambda = new AWS.Lambda({region: keys["region"], apiVersion: '2015-03-31'});
+            var response = '';
+
+            function invokeLambda() {
+            var lambdaParams = {
+                FunctionName: keys["lambda_function_name"],
+                InvocationType: 'RequestResponse',
+                Payload: JSON.stringify({"video_urls": document.getElementById("videoURLs").value}),
+                LogType: 'None'
+            };
+
+            lambda.invoke(lambdaParams, function(err, data) {
+                if (err) {
+                    prompt(err);
+                } else {
+                    response = JSON.parse(data.Payload);
+                }
+                });
+            }
         </script>
         <style>
             textarea {
@@ -32,9 +50,9 @@
                         <div class="px-5 py-4">
                             <form id="submission-form" method="">
                                 <h4 class="text-dark">Enter the Video URLs below</h4>
-                                <textarea id="description-input" rows="5" placeholder="https://youtu.be/..." class="form-control" style="width:100%;"></textarea><br/>
+                                <textarea id="videoURLs" rows="5" placeholder="https://youtu.be/..." class="form-control" style="width:100%;"></textarea><br/>
                                 <div class="text-center py-5">
-                                    <button type="button" onClick="" class="btn btn-lg btn-danger btn-gradient">Submit</button>
+                                    <button type="button" onClick="invokeLambda()" class="btn btn-lg btn-danger btn-gradient">Submit</button>
                                 </div>
                             </form>
                         </div>
