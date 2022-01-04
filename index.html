@@ -39,23 +39,51 @@
             }
         </style>
     </head>
-    <body class="bg-dark bg-gradient py-5 my-5">
-        <div class="py-5">
-            <div class="container bg-white bg-gradient">
-                <div class="row">
-                    <div class="my-5 col">
-                        <div class="text-center">
-                            <h1>Youtube Transcribe</h1>
-                        </div>
-                        <div class="px-5 py-4">
-                            <form id="submission-form" method="">
-                                <h4 class="text-dark">Enter the Video URLs below</h4>
-                                <textarea id="videoURLs" rows="5" placeholder="https://youtu.be/..." class="form-control" style="width:100%;"></textarea><br/>
-                                <div class="text-center py-5">
-                                    <button type="button" onClick="invokeLambda()" class="btn btn-lg btn-danger btn-gradient">Submit</button>
-                                </div>
-                            </form>
-                        </div>
+    <body class="bg-dark bg-gradient py-5">
+        <div class="container bg-white bg-gradient">
+            <div class="row">
+                <div class="my-5 col">
+                    <div class="text-center">
+                        <h1>Youtube Transcribe</h1>
+                    </div>
+                    <div class="px-5 py-4">
+                        <form id="submission-form" method="">
+                            <h4 class="text-dark">Enter the Video URLs below</h4>
+                            <textarea id="videoURLs" rows="5" maxlength="250" placeholder="https://youtu.be/..." class="form-control" style="width:100%;"></textarea><br/>
+                            <div class="text-center py-5">
+                                <button type="button" onClick="invokeLambda()" class="btn btn-lg btn-danger btn-gradient">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="py-3 col">
+                    <div class="text-center">
+                        <h1>Transcriptions</h1>
+                    </div>
+                    <br/>
+                    <table class="table table-light table-striped py-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">URL</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Transcript</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="text-muted" scope="row">1</th>
+                                <th class="text-muted" scope="row">https://youtu.be/...</th>
+                                <th class="text-muted" scope="row">Completed</th>
+                                <th class="text-muted" scope="row">That’s my secret, Captain. I’m always angry.</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center py-5">
+                        <button type="button" onClick="" class="btn btn-lg btn-danger btn-gradient">Load Transcripts</button>
                     </div>
                 </div>
             </div>
